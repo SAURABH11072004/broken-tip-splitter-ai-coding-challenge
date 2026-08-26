@@ -41,6 +41,50 @@ Our solution enforces **integer-cent calculations** and an **explicit remainder 
 
 ---
 
+## 🧪 Test Scenarios
+
+### 1. Zero Tip with Uneven Division
+**Bill:** $10.03 | **Tip:** 0% | **People:** 3
+
+Tests the core rounding problem when the bill cannot be divided evenly. The extra 1¢ is assigned to one person, ensuring all individual shares sum exactly to the grand total.
+
+![Zero Tip with Uneven Division](./screenshots/scenario1.png)
+
+---
+
+### 2. Tip Calculation with Remainder Distribution
+**Bill:** $10.03 | **Tip:** 15% | **People:** 3
+
+Tests tip calculation and fair distribution of the remaining cent among participants.
+
+![Tip Calculation with Remainder Distribution](./screenshots/scenario2.png)
+
+---
+
+### 3. Perfectly Even Split
+**Bill:** $50.00 | **Tip:** 0% | **People:** 4
+
+Tests a scenario where the grand total divides perfectly. No remainder exists, so every person pays the same amount.
+
+![Perfectly Even Split](./screenshots/scenario3.png)
+
+---
+
+### 4. Single Person with Tip
+**Bill:** $10.00 | **Tip:** 15% | **People:** 1
+
+Tests the single-person edge case where the complete grand total is assigned to one person.
+
+![Single Person with Tip](./screenshots/scenario4.png)
+
+---
+
+### 5. Minimum Amount Edge Case
+**Bill:** $0.01 | **Tip:** 0% | **People:** 2
+
+Tests the smallest possible amount. The extra cent is assigned to one person while preserving exact total accuracy.
+
+![Minimum Amount Edge Case](./screenshots/scenario5.png)
 ## Features
 
 - **Mathematical Invariant Guarantee:** Never loses or creates cents across any bill amount, tip percentage, or party size.
