@@ -1,0 +1,32 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model SplitCalculation {
+  id              String       @id @default(uuid())
+  billCents       Int
+  tipPercentage   Float
+  tipCents        Int
+  grandTotalCents Int
+  peopleCount     Int
+  baseShareCents  Int
+  remainderCents  Int
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  shares          SplitShare[]
+}
+
+model SplitShare {
+  id              String           @id @default(uuid())
+  calculationId   String
+  calculation     SplitCalculation @relation(fields: [calculationId], references: [id], onDelete: Cascade)
+  personNumber    Int
+  baseShareCents  Int
+  extraCents      Int
+  finalShareCents Int
+}
